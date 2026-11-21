@@ -20,14 +20,35 @@ ranking_suxfixes = {
 }
 
 print("Welcome to Rank Anything")
-print("To begin with enter select how many things you want to rank from 4-16")
+print("To begin select one of the options below")
+print("1: Start new game") # Begins a new game 
+print("2: View categories") # todo 
+print("3: Add categories") # todo
+print("4: Remove categories") # todo
 
-items_to_rank = get_items_to_rank()
+while True:
+    choice = int(input("Please choose from one of the displayed options: "))
+    if choice == 1:
+        items_to_rank = get_items_to_rank()
+        print("The category to rank by is: ", create_random_category())
+        print(" ")
 
-print("The category to rank by is: ", create_random_category())
+        print("Now time to rank your items!")
 
-print("Now time to rank your items!")
-for i in range (1, len(items_to_rank)):
-    print(f"The {i}{ranking_suxfixes[i]} item is {items_to_rank[i]}")
-    rank = str(input("Please enter your chosen rank for this item: "))
-    items_to_rank[i].choose_rank(rank)
+        for i in range (1, len(items_to_rank)):
+            print(f"The {i}{ranking_suxfixes[i]} item is {items_to_rank[i]}")
+            rank = str(input("Please enter your chosen rank for this item: "))
+            items_to_rank[i].choose_rank(rank)
+            print("Needs to be finished")
+    elif choice == 2:
+        print("Working")
+        break
+    elif choice == 3:
+        print("Working")
+        break 
+    elif choice == 4:
+        print("Working")
+        break
+    else:
+        print("Invalid input")
+        print("Please choose from the provided options")
