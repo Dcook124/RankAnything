@@ -10,7 +10,7 @@ categories_to_rank_by: list[str] = ["Who would make the best therapist?", "Who w
 #Possibly create class later? unsure if neccessary 
 
 def get_items_to_rank() -> list:
-    items_to_rank: list = []
+    items_to_rank: list = [None]
     num_items = int(input("Please enter how many items you want to rank from 4 - 16: "))
     if num_items < 4:
         raise Exception("Cannot rank less than 4 items")
