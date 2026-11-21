@@ -18,6 +18,7 @@ ranking_suxfixes = {
     15: "th",
     16: "th"
 }
+
 print("Welcome to Rank Anything")
 print("To begin with enter select how many things you want to rank from 4-16")
 
@@ -28,4 +29,5 @@ print("The category to rank by is: ", create_random_category())
 print("Now time to rank your items!")
 for i in range (1, len(items_to_rank)):
     print(f"The {i}{ranking_suxfixes[i]} item is {items_to_rank[i]}")
-    
+    rank = str(input("Please enter your chosen rank for this item: "))
+    items_to_rank[i].choose_rank(rank)
