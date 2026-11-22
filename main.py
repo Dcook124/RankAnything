@@ -25,11 +25,10 @@ print("1: Start new game") # Begins a new game
 print("2: View categories") # todo 
 print("3: Add categories") # todo
 print("4: Remove categories") # todo
-print("#: End program") # Accepts # for now. Will change once all options finished
 
 while True:
-    choice = input("Please choose from one of the displayed options: ") # input() takes str by default so have the conditionals check for str types not int types
-    if choice == "1":
+    choice = int(input("Please choose from one of the displayed options: "))
+    if choice == 1:
         items_to_rank = get_items_to_rank()
         print("The category to rank by is: ", create_random_category())
         print(" ")
@@ -41,18 +40,14 @@ while True:
             rank = str(input("Please enter your chosen rank for this item: "))
             items_to_rank[i].choose_rank(rank)
             print("Needs to be finished")
-
-    elif choice == "2":
+    elif choice == 2:
         print("Working")
         break
-    elif choice == "3":
+    elif choice == 3:
         print("Working")
         break 
-    elif choice == "4":
+    elif choice == 4:
         print("Working")
-        break
-    elif choice == "#":
-        print("Goodbye world")
         break
     else:
         print("Invalid input")
