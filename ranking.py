@@ -34,8 +34,13 @@ class Rank:
     
     def __repr__(self) -> None:
         return f"{self.rank} rank"
+
     def add_item(self, item) -> None:
         self.contains.append(item)
+    
+    def display_contained_items(self) -> None:
+        for i in range(0, len(self.contains)):
+            print(f"{self.rank} rank: {self.contains[i]}")
 
 #Gets the items to be ranked by the user 
 

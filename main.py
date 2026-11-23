@@ -22,12 +22,18 @@ ranking_suxfixes = {
 }
 #Creating classes 
 
-S_rank = Rank("S")
+S_Rank = Rank("S")
 A_Rank = Rank("A")
 B_Rank = Rank("B")
 C_Rank = Rank("C")
 D_Rank = Rank("D")
-
+Ranks = {
+    "S" : S_Rank,
+    "A" : A_Rank,
+    "B" : B_Rank,
+    "C" : C_Rank,
+    "D" : D_Rank
+}
 print("Welcome to Rank Anything")
 print("To begin select one of the options below")
 print("1: Start new game") # Begins a new game 
@@ -51,11 +57,23 @@ while True:
 
         print("Now time to rank your items!")
 
-        for i in range (1, len(items_to_rank)):
+        for i in range(1, len(items_to_rank)):
             print(f"The {i}{ranking_suxfixes[i]} item is {items_to_rank[i]}")
-            rank = str(input("Please enter your chosen rank for this item: "))
-            items_to_rank[i].choose_rank(rank)
-            
+            while True:
+                rank = str(input("Please enter your chosen rank for this item: "))
+                items_to_rank[i].choose_rank(rank)
+                try:
+                    Ranks[rank].add_item(items_to_rank[i])
+                    break
+                except KeyError:
+                    print("Please choose from S-A-B-C-D Descending")
+        print("Final rankings")
+        S_Rank.display_contained_items()
+        A_Rank.display_contained_items()
+        B_Rank.display_contained_items()
+        C_Rank.display_contained_items()
+        D_Rank.display_contained_items()
+
     elif choice == 2:
         for i in range(0, len(categories_to_rank_by)):
             print(f"{i+1}: {categories_to_rank_by[i]}") 
