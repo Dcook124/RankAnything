@@ -28,7 +28,7 @@ class Rank:
     """
     Rank class is used to create ranks to hold the items that get placed in a certain class
     """
-    def __init__(self, contains, rank) -> None:
+    def __init__(self, rank) -> None:
         self.rank = rank
         self.contains = []
     
@@ -39,17 +39,20 @@ class Rank:
 
 def get_items_to_rank() -> list["Item"]:
     items_to_rank: list["Item"] = [None] # items_to_rank has a None type at index 0 so number prefixes can be properly applied 
-    num_items = int(input("Please enter how many items you want to rank from 4 - 16: "))
-    if num_items < 4:
-        print("Cannot rank less than 4 items")
-    elif num_items > 16:
-        print("Cannot rank more than 16 items")
-    elif int(num_items) is False:
-        print("Please input a number between 4 - 16")
-    else:
-        for i in range(0, num_items):
-            item = input("Enter the next item to rank: ")
-            items_to_rank.append(Item(item))
+    while True:
+        try:
+            num_items = int(input("Please enter how many items you want to rank from 4 - 16: "))
+
+            if 4 <= num_items <= 16:
+                break
+            else:
+                print("Please input a number from 4 - 16")
+        except ValueError:
+            print("Please input valid integer from 4 - 16")
+
+    for i in range(0, num_items):
+        item = input("Enter the next item to rank: ")
+        items_to_rank.append(Item(item))
     return items_to_rank
 
 # Uses random  library to choose a random entry from the categories_to_rank_by list

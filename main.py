@@ -27,7 +27,13 @@ print("3: Add categories") # todo
 print("4: Remove categories") # todo
 
 while True:
-    choice = int(input("Please choose from one of the displayed options: "))
+    choice = input("Please choose from one of the displayed options: ")
+
+    try:
+        choice = int(choice)
+    except (ValueError, TypeError):
+        print("Invalid input")
+        print("Please choose from the provided options") 
     if choice == 1:
         items_to_rank = get_items_to_rank()
         print("The category to rank by is: ", create_random_category())
