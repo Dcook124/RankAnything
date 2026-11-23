@@ -34,6 +34,8 @@ class Rank:
     
     def __repr__(self) -> None:
         return f"{self.rank} rank"
+    def add_item(self, item) -> None:
+        self.contains.append(item)
 
 #Gets the items to be ranked by the user 
 
@@ -50,7 +52,7 @@ def get_items_to_rank() -> list["Item"]:
         except ValueError:
             print("Please input valid integer from 4 - 16")
 
-    for i in range(0, num_items):
+    for _ in range(0, num_items):
         item = input("Enter the next item to rank: ")
         items_to_rank.append(Item(item))
     return items_to_rank

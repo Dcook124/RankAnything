@@ -1,5 +1,7 @@
 from ranking import get_items_to_rank
 from ranking import create_random_category
+from ranking import categories_to_rank_by
+from ranking import Rank 
 ranking_suxfixes = {
     1: "st",
     2: "nd",
@@ -18,13 +20,21 @@ ranking_suxfixes = {
     15: "th",
     16: "th"
 }
+#Creating classes 
+
+S_rank = Rank("S")
+A_Rank = Rank("A")
+B_Rank = Rank("B")
+C_Rank = Rank("C")
+D_Rank = Rank("D")
 
 print("Welcome to Rank Anything")
 print("To begin select one of the options below")
 print("1: Start new game") # Begins a new game 
-print("2: View categories") # todo 
-print("3: Add categories") # todo
-print("4: Remove categories") # todo
+print("2: View categories") # Displays all the categories stored in categories_to_rank_by 
+print("3: Add categories") # Asks user for the category they want to add, appends it to categories_to_rank_by, then prints added category
+print("4: Remove categories") # Asks user for the category they want to delete by index, uses del to remove it from categories_to_rank_by
+print("5: Exit program") # Exits the program. What did you think this would do?
 
 while True:
     choice = input("Please choose from one of the displayed options: ")
@@ -45,15 +55,23 @@ while True:
             print(f"The {i}{ranking_suxfixes[i]} item is {items_to_rank[i]}")
             rank = str(input("Please enter your chosen rank for this item: "))
             items_to_rank[i].choose_rank(rank)
-            print("Needs to be finished")
+            
     elif choice == 2:
-        print("Working")
-        break
+        for i in range(0, len(categories_to_rank_by)):
+            print(f"{i+1}: {categories_to_rank_by[i]}") 
+
     elif choice == 3:
-        print("Working")
-        break 
+        new_category = input("Please enter the new category you want to add: ") # Need to safeguard input handling
+        categories_to_rank_by.append(new_category)
+        print(f"Added '{categories_to_rank_by[-1]}'")
+
     elif choice == 4:
-        print("Working")
+        print("Please input the number of the category you want removed")
+        print("Use option 2 'View categories' to see all categories and their numbers")
+        category_to_delete = int(input("Remove category: ")) # Need to safe guard input handling. Make function to check?
+        del categories_to_rank_by[category_to_delete-1]
+    elif choice == 5:
+        print("Ending program. Goodbye")
         break
     else:
         print("Invalid input")
